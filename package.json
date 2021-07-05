@@ -1,0 +1,17 @@
+{
+  "name": "nearly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "grammar.js",
+  "scripts": {
+    "test": "npm run compile && node ./pl0/parse-pl0.js",
+    "compile": "nearleyc ./pl0/pl0.ne -o ./pl0/pl0.js"
+  },
+  "author": "Nerea Rodríguez Hernández <alu0101215693@ull.edu.es>",
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "^2.20.1",
+    "nearley-moo": "^1.0.2",
+    "nearly": "^1.8.1"
+  }
+}
