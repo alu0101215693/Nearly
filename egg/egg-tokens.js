@@ -1,20 +1,26 @@
-const number = /[-+]?\d*\.?\d+([eE][-+]?\d+)?/;
-const string = /"(((?:[^"\\]|\\.)*))"/;
-const word = /([^\s(){}\[\],":.]+|:=)/;
-const COMMA = /[,]/;
-const ws = /(\s|[#;].*|\/\*(.|\n)*?\*\/)+/;
-const LP = /([\{\(])/;
-const RP = /([\}\)])/;
-
 const tokens = {
-  ws: {match: ws, lineBreaks: true},
-  number,
-	string,
-	word,
-	LP,
-	RP,
-	COMMA
-}
+  'ws': {match: /\s/, lineBreaks: true},
+  'comment': {match: /(?:[#;].*|\/\*(?:.|\n)*?\*\/)+/, lineBreaks: true},
+  'COMMA': {match: /\,/, value: d => d},
+  'LP': {match: /[\{\(]/, value: d => d},
+  'RP': {match: /[\}\)]/, value: d => d},
+  'string': {match: /"((?:[^"\\]|\\.)*)"/, value: d => d.slice(1, d.length -1)},
+  'number': {match: /[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?/, value: d => parseFloat(d)},
+  'word': {match: /[^\s(){}\[\],":.]+|:=/, value: d => d},
+};
 
 module.exports = tokens;
+
+/*const tokens = {
+  'ws': {match: /\s/, lineBreaks: true},
+  'comment': {match: /(?:[#;].*|\/\*(?:.|\n)*?\*\/)+/, lineBreaks: true},
+  'COMMA': ',',
+  'LP': '(',
+  'RP': ')',
+  'string': {match: /"((?:[^"\\]|\\.)*)"/, value: d => d.slice(1, d.length -1)},
+  'number': {match: /[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?/, value: d => parseFloat(d)},
+  'word': {match: /[^\s(){}\[\],":.]+|:=/, value: d => d},
+};
+
+module.exports = tokens;*/
              
