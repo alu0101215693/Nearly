@@ -1,0 +1,19 @@
+{
+  "name": "nearley-learning-egg",
+  "version": "1.0.0",
+  "description": "A trivial example of nearley.js use",
+  "main": "index.js",
+  "scripts": {
+    "compile": "nearleyc egg.ne -o egg.js",
+    "generate": "nearley-unparse -n 4 egg.js",
+    "test": "nearley-test -i '+(1,4)' egg.js",
+    "railroad": "nearley-railroad egg.ne -o egg.html",
+    "start": "node use_egg.js"
+  },
+  "keywords": [],
+  "author": "Nerea Rodríguez Hernández",
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "latest"
+  }
+}
