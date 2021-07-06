@@ -1,0 +1,19 @@
+{
+  "name": "nearley-learning-aritmetic-wikipedia",
+  "version": "1.0.0",
+  "description": "A trivial example of nearley.js use",
+  "main": "index.js",
+  "scripts": {
+    "test": "nearley-test -i '8*9' aritmetic.js",
+    "compile": "nearleyc aritmetic.ne -o aritmetic.js",
+    "generate": "nearley-unparse -n 3 aritmetic.js",
+    "railroad": "nearley-railroad aritmetic.ne -o aritmetic.html",
+    "start": "node use_aritmetic.js"
+  },
+  "keywords": [],
+  "author": "Nerea Rodríguez Hernández",
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "latest"
+  }
+}
