@@ -5,14 +5,12 @@ const tokens = require('../egg/egg-tokens.js')
  
 const nm = require('nearley-moo').parser(nearley, grammar) // curried
  
-let parser = nm(moo.compile(tokens))
- 
+let parser = nm(moo.compile(tokens));
 // ignored tokens will not be passed to nearley
 // helpful for whitespace and/or comments
 parser.ignore('ws'); // may be Array<string> or String
 parser.ignore('comments');
 
 // feed your lexer+parser combo as normal
-parser.feed('+(1, 3)');
- 
-console.log(parser.results) // just like nearley
+parser.feed('+(1,5)');
+console.log(parser.lexer.buffer) // just like nearley
