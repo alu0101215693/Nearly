@@ -10,13 +10,41 @@ nm(tokens);
 
 expression -> STRING 
             | NUMBER
-            | WORD apply
+            | WORD apply {%
+              function (data) {
+                if (!data[1]) return data[0];
+                return `{"type": "apply", "operator": ${data[0]}, "args": [${data[1]}]}`
+              }
+            %}
 
-apply -> null
-        | %LP (expression %COMMA):* expression:? %RP apply
+apply -> null {% () => { return null } %}
+        | %LP (expression %COMMA):* expression:? %RP apply {%
+              function (data) {
+                  console.log('apply')
+                let result = [];
+                data[1].forEach((element) => {
+                  element.splice(1, 3);
+                  result.push(element);
+                })
+                if (data[2].length > 0) result.push(data[2]);
+                return result;
+              }
+            %}
 
-STRING -> %string
+STRING -> %string {%
+  function (data) {
+    return `{"type": "value", "value": ${data[0]}}`;
+  }
+%}
 
-NUMBER -> %number:+
+NUMBER -> %number:+ {%
+  function (data) {
+    return `{"type: "value", "value": "${data[0].join("")}"}`;
+  }
+%}
 
-WORD -> %word
+WORD -> %word {%
+  function (data) {
+    return `{"type": "word", "value": "${data[0]}"}`
+  }
+%}
