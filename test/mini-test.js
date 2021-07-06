@@ -13,4 +13,3 @@ parser.ignore('comments');
 
 // feed your lexer+parser combo as normal
 parser.feed('+(1,5)');
-console.log(parser.lexer.buffer) // just like nearley
