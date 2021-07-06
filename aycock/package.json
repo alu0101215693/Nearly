@@ -1,0 +1,19 @@
+{
+  "name": "nearley-learning-aycock-wikipedia",
+  "version": "1.0.0",
+  "description": "A trivial example of nearley.js use",
+  "main": "index.js",
+  "scripts": {
+    "compile": "nearleyc aycock.ne -o aycock.js",
+    "generate": "nearley-unparse -n 4 aycock.js",
+    "test": "nearley-test -i 'aaaa' aycock.js",
+    "railroad": "nearley-railroad aycock.ne -o aycock.html",
+    "start": "node use_aycock.js"
+  },
+  "keywords": [],
+  "author": "Nerea Rodríguez Hernández",
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "latest"
+  }
+}
